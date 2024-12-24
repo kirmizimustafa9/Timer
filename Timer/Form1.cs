@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Threading;
 
 namespace Timer
 {
@@ -17,17 +17,13 @@ namespace Timer
         private int minutes = 0;
         private int hours = 0;
         string strTime = "";
+        string startFolder = AppDomain.CurrentDomain.BaseDirectory;
 
         public Form1()
         {
             InitializeComponent();
             
         }
-
-        //async Task<int> timerValue
-        //{
-            
-        //}
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -67,6 +63,12 @@ namespace Timer
             hours = 0;
             minutes = 0;
             seconds = 0;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 }

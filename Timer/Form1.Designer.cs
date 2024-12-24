@@ -34,7 +34,7 @@
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_pause = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -94,14 +94,15 @@
             this.listBox1.Size = new System.Drawing.Size(252, 303);
             this.listBox1.TabIndex = 4;
             // 
-            // button1
+            // btn_save
             // 
-            this.button1.Location = new System.Drawing.Point(713, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 68);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Save This Session Logs";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_save.Location = new System.Drawing.Point(713, 370);
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Size = new System.Drawing.Size(75, 68);
+            this.btn_save.TabIndex = 5;
+            this.btn_save.Text = "Save This Session Logs";
+            this.btn_save.UseVisualStyleBackColor = true;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
             // label1
             // 
@@ -142,7 +143,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_save);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btn_pause);
             this.Controls.Add(this.btn_stop);
@@ -164,7 +165,7 @@
         private System.Windows.Forms.Button btn_stop;
         private System.Windows.Forms.Button btn_pause;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_save;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
