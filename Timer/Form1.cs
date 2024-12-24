@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -38,18 +39,14 @@ namespace Timer
                 hours++;
                 minutes = 0;
             }
-            strTime = $"{hours.ToString()} Hours\n{minutes.ToString()} Minutes\n{seconds.ToString()} Seconds";
+            strTime = $"{hours.ToString()} Hours \n{minutes.ToString()} Minutes \n{seconds.ToString()} Seconds ";
             lbl_timer.Text = strTime;
         }
 
         private void btn_start_Click(object sender, EventArgs e)
         {
-            if(!timer1.Enabled)
-                timer1.Start();
-            else 
-            {
-                timer1.Enabled = true;
-            }
+            timer1.Enabled = true;
+            btn_save.Enabled = false;
         }
 
         private void btn_pause_Click(object sender, EventArgs e)
@@ -63,12 +60,22 @@ namespace Timer
             hours = 0;
             minutes = 0;
             seconds = 0;
+            btn_save.Enabled = true;
         }
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            
-            
+            File.WriteAllText($"{startFolder}/logs.txt",
+                    $"{textBox1.Text} {lbl_timer.Text.ToString()} {DateTime.Now.ToString("dd.MM.yyyy")}"
+                    );
+            listBox1.Items.Add($"{textBox1.Text} {lbl_timer.Text.ToString()} {DateTime.Now.ToString("dd.MM.yyyy")}");
+
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btn_save.Enabled = false;
+        }
+        
     }
 }
