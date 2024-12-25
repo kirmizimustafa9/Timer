@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lbl_timer = new System.Windows.Forms.Label();
             this.btn_start = new System.Windows.Forms.Button();
             this.btn_stop = new System.Windows.Forms.Button();
             this.btn_pause = new System.Windows.Forms.Button();
@@ -39,16 +38,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbl_hour = new System.Windows.Forms.Label();
+            this.lbl_minute = new System.Windows.Forms.Label();
+            this.lbl_second = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // lbl_timer
-            // 
-            this.lbl_timer.AutoSize = true;
-            this.lbl_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.lbl_timer.Location = new System.Drawing.Point(22, 19);
-            this.lbl_timer.Name = "lbl_timer";
-            this.lbl_timer.Size = new System.Drawing.Size(0, 31);
-            this.lbl_timer.TabIndex = 0;
             // 
             // btn_start
             // 
@@ -135,11 +131,74 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // lbl_hour
+            // 
+            this.lbl_hour.AutoSize = true;
+            this.lbl_hour.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_hour.Location = new System.Drawing.Point(174, 9);
+            this.lbl_hour.Name = "lbl_hour";
+            this.lbl_hour.Size = new System.Drawing.Size(0, 20);
+            this.lbl_hour.TabIndex = 9;
+            // 
+            // lbl_minute
+            // 
+            this.lbl_minute.AutoSize = true;
+            this.lbl_minute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_minute.Location = new System.Drawing.Point(174, 44);
+            this.lbl_minute.Name = "lbl_minute";
+            this.lbl_minute.Size = new System.Drawing.Size(0, 20);
+            this.lbl_minute.TabIndex = 10;
+            // 
+            // lbl_second
+            // 
+            this.lbl_second.AutoSize = true;
+            this.lbl_second.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_second.Location = new System.Drawing.Point(174, 79);
+            this.lbl_second.Name = "lbl_second";
+            this.lbl_second.Size = new System.Drawing.Size(0, 20);
+            this.lbl_second.TabIndex = 11;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.Location = new System.Drawing.Point(90, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 20);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Seconds";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(90, 44);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Minutes";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(90, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Hours";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lbl_second);
+            this.Controls.Add(this.lbl_minute);
+            this.Controls.Add(this.lbl_hour);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -148,7 +207,6 @@
             this.Controls.Add(this.btn_pause);
             this.Controls.Add(this.btn_stop);
             this.Controls.Add(this.btn_start);
-            this.Controls.Add(this.lbl_timer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -160,8 +218,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lbl_timer;
         private System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.Button btn_stop;
         private System.Windows.Forms.Button btn_pause;
@@ -171,6 +227,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label lbl_hour;
+        private System.Windows.Forms.Label lbl_minute;
+        private System.Windows.Forms.Label lbl_second;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

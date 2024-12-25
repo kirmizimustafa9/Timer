@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Timer
@@ -19,11 +12,11 @@ namespace Timer
         private int hours = 0;
         string strTime = "";
         string startFolder = AppDomain.CurrentDomain.BaseDirectory;
-
+        List<string> lines = new List<string>();
         public Form1()
         {
             InitializeComponent();
-            
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -39,8 +32,10 @@ namespace Timer
                 hours++;
                 minutes = 0;
             }
-            strTime = $"{hours.ToString()} Hours \n{minutes.ToString()} Minutes \n{seconds.ToString()} Seconds ";
-            lbl_timer.Text = strTime;
+            lbl_hour.Text = hours.ToString();
+            lbl_minute.Text = minutes.ToString();
+            lbl_second.Text = seconds.ToString();
+            strTime = $"{hours.ToString()}h {minutes.ToString()}m {seconds.ToString()}s";
         }
 
         private void btn_start_Click(object sender, EventArgs e)
@@ -65,10 +60,22 @@ namespace Timer
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            File.WriteAllText($"{startFolder}/logs.txt",
-                    $"{textBox1.Text} {lbl_timer.Text.ToString()} {DateTime.Now.ToString("dd.MM.yyyy")}"
-                    );
-            listBox1.Items.Add($"{textBox1.Text} {lbl_timer.Text.ToString()} {DateTime.Now.ToString("dd.MM.yyyy")}");
+            listBox1.Items.Add($"{textBox1.Text} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
+            if (!File.Exists($"{startFolder}/logs.txt"))
+            {
+                File.WriteAllText($"{startFolder}/logs.txt",
+                $"{textBox1.Text} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
+            }
+
+            if (File.Exists($"{startFolder}/logs.txt"))
+            {
+                //writing part
+                using (StreamWriter outputFile = new StreamWriter(Path.Combine(startFolder, "logs.txt")))
+                {
+                    foreach (var item in listBox1.Items)
+                        outputFile.WriteLine(item.ToString());
+                }
+            }
 
         }
 
@@ -76,6 +83,6 @@ namespace Timer
         {
             btn_save.Enabled = false;
         }
-        
+
     }
 }
