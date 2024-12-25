@@ -44,6 +44,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_start
@@ -92,11 +93,12 @@
             // 
             // btn_save
             // 
-            this.btn_save.Location = new System.Drawing.Point(713, 370);
+            this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_save.Location = new System.Drawing.Point(709, 370);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(75, 68);
+            this.btn_save.Size = new System.Drawing.Size(79, 68);
             this.btn_save.TabIndex = 5;
-            this.btn_save.Text = "Save This Session Logs";
+            this.btn_save.Text = "Save This Session To Logs";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
@@ -104,7 +106,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(536, 371);
+            this.label1.Location = new System.Drawing.Point(536, 368);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(147, 17);
             this.label1.TabIndex = 6;
@@ -112,7 +114,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(536, 395);
+            this.textBox1.Location = new System.Drawing.Point(536, 388);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 7;
@@ -188,11 +190,24 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Hours";
             // 
+            // btn_reset
+            // 
+            this.btn_reset.BackColor = System.Drawing.Color.Red;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btn_reset.Location = new System.Drawing.Point(536, 408);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(103, 25);
+            this.btn_reset.TabIndex = 15;
+            this.btn_reset.Text = "reset logs";
+            this.btn_reset.UseVisualStyleBackColor = false;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_reset);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
@@ -210,7 +225,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Timer App";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -233,6 +248,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btn_reset;
     }
 }
 

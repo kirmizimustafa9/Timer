@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Timer
@@ -13,9 +14,31 @@ namespace Timer
         string strTime = "";
         string startFolder = AppDomain.CurrentDomain.BaseDirectory;
         List<string> lines = new List<string>();
+        StreamReader sr;
         public Form1()
         {
             InitializeComponent();
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btn_save.Enabled = false;
+            //getting old session logs from logs.txt when form initialized.
+            if (File.Exists($"{startFolder}/logs.txt"))
+            {
+                using (sr = new StreamReader($"{startFolder}/logs.txt"))
+                {
+                    if (sr.ReadLine() != null)
+                    {
+                        foreach (string line in File.ReadLines($"{startFolder}/logs.txt"))
+                        {
+                            lines.Add(line);
+                            listBox1.Items.Add(line);
+                        }
+                    }
+                }
+            }
 
         }
 
@@ -47,6 +70,7 @@ namespace Timer
         private void btn_pause_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
+            btn_save.Enabled = true;
         }
 
         private void btn_stop_Click(object sender, EventArgs e)
@@ -60,29 +84,24 @@ namespace Timer
 
         private void btn_save_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add($"{textBox1.Text} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
-            if (!File.Exists($"{startFolder}/logs.txt"))
-            {
-                File.WriteAllText($"{startFolder}/logs.txt",
-                $"{textBox1.Text} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
-            }
+            string sessionName = textBox1.Text != string.Empty ? textBox1.Text : "unnamed session";
+            listBox1.Items.Add($"{sessionName} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
 
-            if (File.Exists($"{startFolder}/logs.txt"))
+            //writing data to log file
+            using (StreamWriter writer = new StreamWriter($"{startFolder}/logs.txt", append: true))
             {
-                //writing part
-                using (StreamWriter outputFile = new StreamWriter(Path.Combine(startFolder, "logs.txt")))
-                {
-                    foreach (var item in listBox1.Items)
-                        outputFile.WriteLine(item.ToString());
-                }
+                writer.WriteLine($"{sessionName} {strTime} {DateTime.Now.ToString("dd.MM.yyyy")}");
             }
-
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btn_reset_Click(object sender, EventArgs e)
         {
-            btn_save.Enabled = false;
+            //erasing log data start to end
+            using (StreamWriter writer = new StreamWriter($"{startFolder}/logs.txt"))
+            {
+                listBox1.Items.Clear();
+            }
         }
-
     }
+
 }
